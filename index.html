@@ -1,12 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Duel Tracker</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Duel Tracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #18181b;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .panel {
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .player1 {
+      transform: rotate(180deg);
+    }
+
+    .center {
+      transform: rotate(90deg);
+      margin: 30px 0;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .lp {
+      font-size: 64px;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+      user-select: none;
+    }
+
+    .red {
+      color: #f87171;
+    }
+
+    .blue {
+      color: #60a5fa;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 18px;
+      padding: 16px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .red1 { background: #dc2626; }
+    .red2 { background: #b91c1c; }
+    .red3 { background: #991b1b; }
+
+    .green1 { background: #16a34a; }
+    .green2 { background: #15803d; }
+    .green3 { background: #166534; }
+
+    .sound-btn {
+      width: 100%;
+      background: #0891b2;
+      padding: 28px;
+      font-size: 28px;
+      border-radius: 24px;
+    }
+
+    .history {
+      margin-top: 16px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .entry {
+      background: #3f3f46;
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 14px;
+    }
+
+    .reset {
+      margin-top: 14px;
+      width: 100%;
+      background: #ca8a04;
+    }
+
+    input {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #52525b;
+      background: #3f3f46;
+      color: white;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="panel player1">
+      <div class="title">Player 1</div>
+      <div id="lp1" class="lp red">8000</div>
+
+      <div class="buttons">
+        <button class="red1" onclick="changeLP(1,-100)">-100</button>
+        <button class="red2" onclick="changeLP(1,-500)">-500</button>
+        <button class="red3" onclick="changeLP(1,-1000)">-1000</button>
+
+        <button class="green1" onclick="changeLP(1,100)">+100</button>
+        <button class="green2" onclick="changeLP(1,500)">+500</button>
+        <button class="green3" onclick="changeLP(1,1000)">+1000</button>
+      </div>
+
+      <input placeholder="Player name" />
+    </div>
+
+    <div class="center">
+      <div class="panel">
+        <button class="sound-btn" onclick="playSound()">
+          Play Sound
+        </button>
+      </div>
+
+      <div class="panel" style="margin-top: 14px;">
+        <div class="title">Match History</div>
+
+        <div id="history" class="history"></div>
+
+        <button class="reset" onclick="resetDuel()">
+          Reset Duel
+        </button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="title">Player 2</div>
+      <div id="lp2" class="lp blue">8000</div>
+
+      <div class="buttons">
+        <button class="red1" onclick="changeLP(2,-100)">-100</button>
+        <button class="red2" onclick="changeLP(2,-500)">-500</button>
+        <button class="red3" onclick="changeLP(2,-1000)">-1000</button>
+
+        <button class="green1" onclick="changeLP(2,100)">+100</button>
+        <button class="green2" onclick="changeLP(2,500)">+500</button>
+        <button class="green3" onclick="changeLP(2,1000)">+1000</button>
+      </div>
+
+      <input placeholder="Player name" />
+    </div>
+  </div>
+
+  <audio id="lpSound" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+  <audio id="buttonSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+
+  <script>
+    let player1LP = 8000;
+    let player2LP = 8000;
+
+    const lp1 = document.getElementById('lp1');
+    const lp2 = document.getElementById('lp2');
+    const history = document.getElementById('history');
+
+    function animateNumber(element, start, end) {
+      const duration = 400;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = Math.floor(start + (end - start) * progress);
+        element.textContent = value;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    function addHistory(text) {
+      const div = document.createElement('div');
+      div.className = 'entry';
+      div.textContent = text;
+
+      history.prepend(div);
+    }
+
+    function playLPSound() {
+      const sound = document.getElementById('lpSound');
+      sound.currentTime = 0;
+      sound.play();
+    }
+
+    function playSound() {
+      const sound = document.getElementById('buttonSound');
+      sound.currentTime = 0;
+      sound.play();
+    }
+
+    function changeLP(player, amount) {
+      playLPSound();
+
+      if (player === 1) {
+        const old = player1LP;
+        player1LP = Math.max(0, player1LP + amount);
+        animateNumber(lp1, old, player1LP);
+      } else {
+        const old = player2LP;
+        player2LP = Math.max(0, player2LP + amount);
+        animateNumber(lp2, old, player2LP);
+      }
+
+      addHistory(`Player ${player} ${amount > 0 ? 'gained' : 'lost'} ${Math.abs(amount)} LP`);
+    }
+
+    function resetDuel() {
+      animateNumber(lp1, player1LP, 8000);
+      animateNumber(lp2, player2LP, 8000);
+
+      player1LP = 8000;
+      player2LP = 8000;
+
+      addHistory('Duel reset!');
+    }
+
+    addHistory('Duel started!');
+  </script>
+</body>
 </html>
