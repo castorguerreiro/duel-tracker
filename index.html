@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
   <title>Duel Tracker</title>
 
   <style>
@@ -11,11 +14,13 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
       background: #18181b;
       font-family: Arial, sans-serif;
       color: white;
@@ -24,14 +29,13 @@
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: 10px;
     }
 
     .container {
       width: 100%;
-      max-width: 420px;
-      height: 100%;
+      max-width: 340px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -42,8 +46,8 @@
       background: #27272a;
       border: 1px solid #3f3f46;
       border-radius: 24px;
-      padding: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .player1 {
@@ -51,23 +55,24 @@
     }
 
     .center {
-      transform: rotate(90deg);
-      margin: 30px 0;
+      transform: rotate(90deg) scale(0.82);
+      margin: -20px 0;
     }
 
     .title {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .lp {
-      font-size: 64px;
+      font-size: 48px;
       font-weight: bold;
       text-align: center;
-      margin: 20px 0;
+      margin: 16px 0;
       user-select: none;
+      font-variant-numeric: tabular-nums;
     }
 
     .red {
@@ -81,43 +86,59 @@
     .buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
     button {
       border: none;
-      border-radius: 18px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 12px;
       color: white;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.15s;
+      transition: transform 0.12s ease;
     }
 
     button:active {
       transform: scale(0.95);
     }
 
-    .red1 { background: #dc2626; }
-    .red2 { background: #b91c1c; }
-    .red3 { background: #991b1b; }
+    .red1 {
+      background: #dc2626;
+    }
 
-    .green1 { background: #16a34a; }
-    .green2 { background: #15803d; }
-    .green3 { background: #166534; }
+    .red2 {
+      background: #b91c1c;
+    }
+
+    .red3 {
+      background: #991b1b;
+    }
+
+    .green1 {
+      background: #16a34a;
+    }
+
+    .green2 {
+      background: #15803d;
+    }
+
+    .green3 {
+      background: #166534;
+    }
 
     .sound-btn {
       width: 100%;
       background: #0891b2;
-      padding: 28px;
-      font-size: 28px;
-      border-radius: 24px;
+      padding: 18px;
+      font-size: 20px;
+      border-radius: 20px;
     }
 
     .history {
-      margin-top: 16px;
-      max-height: 200px;
+      margin-top: 14px;
+      max-height: 140px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -126,34 +147,41 @@
 
     .entry {
       background: #3f3f46;
-      padding: 12px;
-      border-radius: 14px;
-      font-size: 14px;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 13px;
     }
 
     .reset {
-      margin-top: 14px;
+      margin-top: 12px;
       width: 100%;
       background: #ca8a04;
     }
 
     input {
       width: 100%;
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 14px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 12px;
       border: 1px solid #52525b;
       background: #3f3f46;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #a1a1aa;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
 
+    <!-- PLAYER 1 -->
     <div class="panel player1">
       <div class="title">Player 1</div>
+
       <div id="lp1" class="lp red">8000</div>
 
       <div class="buttons">
@@ -169,14 +197,16 @@
       <input placeholder="Player name" />
     </div>
 
+    <!-- CENTER -->
     <div class="center">
+
       <div class="panel">
         <button class="sound-btn" onclick="playSound()">
           Play Sound
         </button>
       </div>
 
-      <div class="panel" style="margin-top: 14px;">
+      <div class="panel" style="margin-top: 12px;">
         <div class="title">Match History</div>
 
         <div id="history" class="history"></div>
@@ -187,8 +217,10 @@
       </div>
     </div>
 
+    <!-- PLAYER 2 -->
     <div class="panel">
       <div class="title">Player 2</div>
+
       <div id="lp2" class="lp blue">8000</div>
 
       <div class="buttons">
@@ -205,16 +237,23 @@
     </div>
   </div>
 
-  <audio id="lpSound" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
-  <audio id="buttonSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio
+    id="lpSound"
+    src="https://actions.google.com/sounds/v1/cartoon/pop.ogg">
+  </audio>
+
+  <audio
+    id="buttonSound"
+    src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg">
+  </audio>
 
   <script>
     let player1LP = 8000;
     let player2LP = 8000;
 
-    const lp1 = document.getElementById('lp1');
-    const lp2 = document.getElementById('lp2');
-    const history = document.getElementById('history');
+    const lp1 = document.getElementById("lp1");
+    const lp2 = document.getElementById("lp2");
+    const historyBox = document.getElementById("history");
 
     function animateNumber(element, start, end) {
       const duration = 400;
@@ -222,7 +261,11 @@
 
       function update(currentTime) {
         const progress = Math.min((currentTime - startTime) / duration, 1);
-        const value = Math.floor(start + (end - start) * progress);
+
+        const value = Math.floor(
+          start + (end - start) * progress
+        );
+
         element.textContent = value;
 
         if (progress < 1) {
@@ -234,21 +277,21 @@
     }
 
     function addHistory(text) {
-      const div = document.createElement('div');
-      div.className = 'entry';
+      const div = document.createElement("div");
+      div.className = "entry";
       div.textContent = text;
 
-      history.prepend(div);
+      historyBox.prepend(div);
     }
 
     function playLPSound() {
-      const sound = document.getElementById('lpSound');
+      const sound = document.getElementById("lpSound");
       sound.currentTime = 0;
       sound.play();
     }
 
     function playSound() {
-      const sound = document.getElementById('buttonSound');
+      const sound = document.getElementById("buttonSound");
       sound.currentTime = 0;
       sound.play();
     }
@@ -266,7 +309,11 @@
         animateNumber(lp2, old, player2LP);
       }
 
-      addHistory(`Player ${player} ${amount > 0 ? 'gained' : 'lost'} ${Math.abs(amount)} LP`);
+      addHistory(
+        `Player ${player} ${
+          amount > 0 ? "gained" : "lost"
+        } ${Math.abs(amount)} LP`
+      );
     }
 
     function resetDuel() {
@@ -276,10 +323,10 @@
       player1LP = 8000;
       player2LP = 8000;
 
-      addHistory('Duel reset!');
+      addHistory("Duel reset!");
     }
 
-    addHistory('Duel started!');
+    addHistory("Duel started!");
   </script>
 </body>
 </html>
