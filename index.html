@@ -29,25 +29,25 @@
     body {
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: 6px;
     }
 
     .container {
       width: 100%;
-      max-width: 340px;
+      max-width: 280px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 10px;
+      gap: 6px;
     }
 
     .panel {
       background: #27272a;
       border: 1px solid #3f3f46;
-      border-radius: 24px;
-      padding: 14px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
 
     .player1 {
@@ -55,22 +55,22 @@
     }
 
     .center {
-      transform: rotate(90deg) scale(0.82);
-      margin: -20px 0;
+      transform: rotate(90deg) scale(0.68);
+      margin: -70px 0;
     }
 
     .title {
-      font-size: 20px;
+      font-size: 15px;
       font-weight: bold;
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .lp {
-      font-size: 48px;
+      font-size: 36px;
       font-weight: bold;
       text-align: center;
-      margin: 16px 0;
+      margin: 10px 0;
       user-select: none;
       font-variant-numeric: tabular-nums;
     }
@@ -86,15 +86,15 @@
     .buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     button {
       border: none;
-      border-radius: 16px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 9px;
       color: white;
-      font-size: 16px;
+      font-size: 12px;
       font-weight: bold;
       cursor: pointer;
       transition: transform 0.12s ease;
@@ -131,42 +131,42 @@
     .sound-btn {
       width: 100%;
       background: #0891b2;
-      padding: 18px;
-      font-size: 20px;
-      border-radius: 20px;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 14px;
     }
 
     .history {
-      margin-top: 14px;
-      max-height: 140px;
+      margin-top: 10px;
+      max-height: 90px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 5px;
     }
 
     .entry {
       background: #3f3f46;
-      padding: 10px;
-      border-radius: 12px;
-      font-size: 13px;
+      padding: 7px;
+      border-radius: 10px;
+      font-size: 10px;
     }
 
     .reset {
-      margin-top: 12px;
+      margin-top: 10px;
       width: 100%;
       background: #ca8a04;
     }
 
     input {
       width: 100%;
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 12px;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 10px;
       border: 1px solid #52525b;
       background: #3f3f46;
       color: white;
-      font-size: 15px;
+      font-size: 12px;
     }
 
     input::placeholder {
@@ -206,7 +206,7 @@
         </button>
       </div>
 
-      <div class="panel" style="margin-top: 12px;">
+      <div class="panel" style="margin-top: 10px;">
         <div class="title">Match History</div>
 
         <div id="history" class="history"></div>
@@ -256,7 +256,7 @@
     const historyBox = document.getElementById("history");
 
     function animateNumber(element, start, end) {
-      const duration = 400;
+      const duration = 300;
       const startTime = performance.now();
 
       function update(currentTime) {
