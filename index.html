@@ -161,6 +161,22 @@ body {
       background: #166534;
     }
 
+<button class="fullscreen" onclick="toggleFullscreen()">
+  Fullscreen
+</button>
+    }
+
+    .fullscreen {
+  width: 50%;
+  margin-top: 5px;
+  margin-left: 100px;
+
+  background: #2563eb;
+  font-size: 15px;
+  padding: 8px;
+  border-radius: 12px;
+}
+    
     .reset {
       width: 50%;
       margin-top: 5px;
@@ -306,6 +322,15 @@ body {
       player1LP = 10000;
       player2LP = 10000;
     }
+    function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen()
+      .catch(err => {
+        console.log(err);
+      });
+  } else {
+    document.exitFullscreen();
+  }
   </script>
 </body>
 </html>
