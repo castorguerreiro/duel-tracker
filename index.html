@@ -155,8 +155,8 @@
 
     .reset {
       width: 50%;
-      margin-top: 10px;
-      margin-left: 50px;
+      margin-top: 5px;
+      margin-left: 100px;
       background: #ca8a04;
       font-size: 11px;
       padding: 8px;
@@ -170,9 +170,9 @@
 
     <!-- PLAYER 1 -->
     <div class="panel player1">
-      <div class="title">Player 1</div>
+      <div class="title">Duelista I</div>
 
-      <div id="lp1" class="lp red">8000</div>
+      <div id="lp1" class="lp red">10000</div>
 
       <div class="buttons">
         <button class="red1" onclick="changeLP(1,-100)">-100</button>
@@ -190,21 +190,21 @@
 
       <div class="panel sound-panel">
         <button class="sound-btn" onclick="playSound()">
-          PLAY SOUND
+          Sua vez!
         </button>
       </div>
 
       <button class="reset" onclick="resetDuel()">
-        Reset Duel
+        Reset
       </button>
 
     </div>
 
     <!-- PLAYER 2 -->
     <div class="panel player2">
-      <div class="title">Player 2</div>
+      <div class="title">Duelista II</div>
 
-      <div id="lp2" class="lp blue">8000</div>
+      <div id="lp2" class="lp blue">10000</div>
 
       <div class="buttons">
         <button class="red1" onclick="changeLP(2,-100)">-100</button>
@@ -229,8 +229,8 @@
   </audio>
 
   <script>
-    let player1LP = 8000;
-    let player2LP = 8000;
+    let player1LP = 10000;
+    let player2LP = 10000;
 
     const lp1 = document.getElementById("lp1");
     const lp2 = document.getElementById("lp2");
@@ -283,11 +283,11 @@
     }
 
     function resetDuel() {
-      animateNumber(lp1, player1LP, 8000);
-      animateNumber(lp2, player2LP, 8000);
+      animateNumber(lp1, player1LP, 10000);
+      animateNumber(lp2, player2LP, 10000);
 
-      player1LP = 8000;
-      player2LP = 8000;
+      player1LP = 10000;
+      player2LP = 10000;
     }
   </script>
 </body>
