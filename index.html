@@ -78,7 +78,7 @@
   width: 100%;
   height: 100%;
 
-  background: #0891b2;
+   background: #ca8a04;
   border-radius: 0;
   font-size: 20px;
   font-weight: bold;
@@ -109,10 +109,10 @@
     }
 
     .buttons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 5px;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
 
     button {
       border: none;
@@ -157,7 +157,7 @@
       width: 50%;
       margin-top: 5px;
       margin-left: 120px;
-      background: #ca8a04;
+      background: #7c3aed;
       font-size: 11px;
       padding: 8px;
       border-radius: 12px;
@@ -175,14 +175,19 @@
       <div id="lp1" class="lp red">10000</div>
 
       <div class="buttons">
-        <button class="red1" onclick="changeLP(1,-100)">-100</button>
-        <button class="red2" onclick="changeLP(1,-500)">-500</button>
-        <button class="red3" onclick="changeLP(1,-1000)">-1000</button>
+  <button class="red1" onclick="changeLP(1,-50)">-50</button>
+  <button class="red1" onclick="changeLP(1,-100)">-100</button>
+  <button class="red2" onclick="changeLP(1,-500)">-500</button>
+  <button class="red3" onclick="changeLP(1,-1000)">-1000</button>
 
-        <button class="green1" onclick="changeLP(1,100)">+100</button>
-        <button class="green2" onclick="changeLP(1,500)">+500</button>
-        <button class="green3" onclick="changeLP(1,1000)">+1000</button>
-      </div>
+  <button class="green1" onclick="changeLP(1,50)">+50</button>
+  <button class="green1" onclick="changeLP(1,100)">+100</button>
+  <button class="green2" onclick="changeLP(1,500)">+500</button>
+  <button class="green3" onclick="changeLP(1,1000)">+1000</button>
+
+  <button class="red3" onclick="changeLP(1,-2000)">-2000</button>
+  <button class="green3" onclick="changeLP(1,2000)">+2000</button>
+</div>
     </div>
 
     <!-- CENTER -->
@@ -207,14 +212,19 @@
       <div id="lp2" class="lp blue">10000</div>
 
       <div class="buttons">
-        <button class="red1" onclick="changeLP(2,-100)">-100</button>
-        <button class="red2" onclick="changeLP(2,-500)">-500</button>
-        <button class="red3" onclick="changeLP(2,-1000)">-1000</button>
+  <button class="red1" onclick="changeLP(2,-50)">-50</button>
+  <button class="red1" onclick="changeLP(2,-100)">-100</button>
+  <button class="red2" onclick="changeLP(2,-500)">-500</button>
+  <button class="red3" onclick="changeLP(2,-1000)">-1000</button>
 
-        <button class="green1" onclick="changeLP(2,100)">+100</button>
-        <button class="green2" onclick="changeLP(2,500)">+500</button>
-        <button class="green3" onclick="changeLP(2,1000)">+1000</button>
-      </div>
+  <button class="green1" onclick="changeLP(2,50)">+50</button>
+  <button class="green1" onclick="changeLP(2,100)">+100</button>
+  <button class="green2" onclick="changeLP(2,500)">+500</button>
+  <button class="green3" onclick="changeLP(2,1000)">+1000</button>
+
+  <button class="red3" onclick="changeLP(2,-2000)">-2000</button>
+  <button class="green3" onclick="changeLP(2,2000)">+2000</button>
+</div>
     </div>
   </div>
 
