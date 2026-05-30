@@ -160,22 +160,6 @@ body {
     .green3 {
       background: #166534;
     }
-
-<button class="fullscreen" onclick="toggleFullscreen()">
-  Fullscreen
-</button>
-    }
-
-    .fullscreen {
-  width: 50%;
-  margin-top: 5px;
-  margin-left: 100px;
-
-  background: #2563eb;
-  font-size: 15px;
-  padding: 8px;
-  border-radius: 12px;
-}
     
     .reset {
       width: 50%;
@@ -222,6 +206,10 @@ body {
         </button>
       </div>
 
+<button class="fullscreen" onclick="toggleFullscreen()">
+  Fullscreen
+</button>
+      
       <button class="reset" onclick="resetDuel()">
         Reset
       </button>
@@ -322,7 +310,6 @@ body {
       player1LP = 10000;
       player2LP = 10000;
       }
-    }
     
     function toggleFullscreen() {
   if (!document.fullscreenElement) {
