@@ -56,6 +56,21 @@ body {
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
     }
 
+       .container.hardcore .panel {
+  background: #000;
+  border-color: #d19438;
+}
+
+.container.hardcore .sound-btn {
+  background: #000;
+  color: #d19438;
+}
+
+.container.hardcore .title {
+  color: #d19438;
+}
+
+
     .player1 {
   transform: rotate(180deg);
   margin-bottom: 200px;
@@ -398,31 +413,16 @@ player1LP = target;
 player2LP = target;
       }
 
-    let hardcoreMode = false;
+   let hardcoreMode = false;
 
 function toggleHardcore() {
+  const container =
+    document.querySelector(".container");
+
   if (!hardcoreMode) {
     hardcoreMode = true;
 
-    .container.hardcore .panel {
-  background: #000;
-  border-color: #d19438;
-}
-
-.container.hardcore .sound-btn {
-  background: #000;
-  color: #d19438;
-}
-
-.container.hardcore .title {
-  color: #d19438;
-}
-
-   const container =
-  document.querySelector(".container");
-
-container.classList.add("hardcore");
-    container.classList.remove("hardcore");
+    container.classList.add("hardcore");
 
     const sound =
       document.getElementById("hardcoreSound");
@@ -437,11 +437,11 @@ container.classList.add("hardcore");
     player2LP = 20000;
 
     document.body.style.background = "#000";
-    
+
   } else {
     hardcoreMode = false;
 
-    document.body.classList.remove("hardcore");
+    container.classList.remove("hardcore");
 
     animateNumber(lp1, player1LP, 8000);
     animateNumber(lp2, player2LP, 8000);
@@ -453,11 +453,16 @@ container.classList.add("hardcore");
   }
 }
     
-    function toggleFullscreen() {
+  function toggleFullscreen() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen()
       .catch(err => {
         console.log(err);
+      });
+  } else {
+    document.exitFullscreen();
+  }
+}
       
   } else {
     document.exitFullscreen();
