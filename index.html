@@ -202,39 +202,45 @@ body {
 }
 
     .hardcore {
-  width: 20%;
-  margin-top: 5px;
-  margin-left: 160px;
+  position: absolute;
+
+  left: -60px;
+  top: 58%;
+
+  transform: translateY(-50%) rotate(-90deg);
+
+  width: 42px;
+  height: 26px;
+
+  margin: 0;
+  padding: 0;
 
   background: #8b0000;
 
-  font-size: 12px;
-  padding: 6px;
-
-  border-radius: 12px;
+  font-size: 10px;
+  border-radius: 8px;
 }
 
-    body.hardcore {
-  background: #111;
-}
-
-body.hardcore .panel {
+   .container.hardcore .panel {
   background: #000;
   border-color: #d19438;
 }
 
-body.hardcore .sound-btn {
+.container.hardcore .sound-btn {
   background: #000;
   color: #d19438;
 }
 
-body.hardcore .title {
+.container.hardcore .title {
   color: #d19438;
 }
 
-body.hardcore .fullscreen,
-body.hardcore .reset {
-  color: white;
+.container.hardcore .lp {
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
     
   </style>
@@ -389,10 +395,18 @@ player2LP = hardcoreMode ? 20000 : 8000;
     let hardcoreMode = false;
 
 function toggleHardcore() {
+  const container =
+    document.querySelector(".container");
+
   if (!hardcoreMode) {
     hardcoreMode = true;
 
-    document.body.classList.add("hardcore");
+    container.classList.add("hardcore");
+
+    document.documentElement.style.background =
+      "#000";
+    document.body.style.background =
+      "#000";
 
     const sound =
       document.getElementById("hardcoreSound");
@@ -405,10 +419,16 @@ function toggleHardcore() {
 
     player1LP = 20000;
     player2LP = 20000;
+
   } else {
     hardcoreMode = false;
 
-    document.body.classList.remove("hardcore");
+    container.classList.remove("hardcore");
+
+    document.documentElement.style.background =
+      "#cc8823";
+    document.body.style.background =
+      "#cc8823";
 
     animateNumber(lp1, player1LP, 8000);
     animateNumber(lp2, player2LP, 8000);
