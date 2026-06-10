@@ -238,28 +238,6 @@ body {
 
   border-radius: 8px;
 }
-    body.hardcore {
-  background: #111;
-}
-
-body.hardcore .panel {
-  background: #000;
-  border-color: #d19438;
-}
-
-body.hardcore .sound-btn {
-  background: #000;
-  color: #d19438;
-}
-
-body.hardcore .title {
-  color: #d19438;
-}
-
-body.hardcore .fullscreen,
-body.hardcore .reset {
-  color: white;
-}
     
   </style>
 </head>
@@ -436,8 +414,6 @@ function toggleHardcore() {
     player1LP = 20000;
     player2LP = 20000;
 
-    document.body.style.background = "#000";
-
   } else {
     hardcoreMode = false;
 
@@ -449,7 +425,6 @@ function toggleHardcore() {
     player1LP = 8000;
     player2LP = 8000;
 
-    document.body.style.background = "#cc8823";
   }
 }
     
