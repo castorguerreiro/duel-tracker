@@ -221,7 +221,7 @@ body {
   height: 24px;
 
   margin-top: 5px;
-  margin-left: 125px;
+  margin-left: 225px;
 
   background: #8b0000;
 
@@ -404,6 +404,8 @@ function toggleHardcore() {
     player1LP = 20000;
     player2LP = 20000;
 
+    document.body.style.background = "#000";
+
   } else {
     hardcoreMode = false;
 
@@ -414,6 +416,8 @@ function toggleHardcore() {
 
     player1LP = 8000;
     player2LP = 8000;
+
+    document.body.style.background = "#cc8823";
 
   }
 }
