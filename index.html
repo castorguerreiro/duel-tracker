@@ -373,8 +373,7 @@ body {
     const lp1 = document.getElementById("lp1");
     const lp2 = document.getElementById("lp2");
 
-    function animateNumber(element, start, end) {
-      const duration = 1300;
+function animateNumber(element, start, end, duration = 1300) {
       const startTime = performance.now();
 
       function update(currentTime) {
@@ -448,8 +447,8 @@ function toggleHardcore() {
     sound.currentTime = 0;
     sound.play();
 
-    animateNumber(lp1, player1LP, 20000);
-    animateNumber(lp2, player2LP, 20000);
+animateNumber(lp1, player1LP, 20000, 10389);
+animateNumber(lp2, player2LP, 20000, 10389);
 
     player1LP = 20000;
     player2LP = 20000;
